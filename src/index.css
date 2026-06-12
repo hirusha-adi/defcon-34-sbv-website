@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-village-bg: #050807;
+  --color-village-soft: #07110d;
+  --color-village-surface: #0b1512;
+  --color-village-raised: #102018;
+  --color-village-border: #18352a;
+  --color-village-border-strong: #266347;
+  --color-village-text: #e6fff2;
+  --color-village-muted: #8aa99a;
+  --color-village-green: #39ff88;
+  --color-village-cyan: #40e0d0;
+  --color-village-warning: #ffd166;
+  --color-village-danger: #ff4d6d;
+
+  --shadow-glow: 0 0 30px rgba(57, 255, 136, 0.12);
+  --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.35);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Menlo, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-village-bg font-sans text-village-text antialiased;
+  }
+
+  ::selection {
+    @apply bg-village-green/30 text-village-text;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(57, 255, 136, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(57, 255, 136, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@layer components {
+  .hero-section {
+    background-color: var(--color-village-bg);
+    background-image:
+      linear-gradient(180deg, transparent 60%, rgba(5, 8, 7, 0.95)),
+      radial-gradient(ellipse 70% 55% at 72% 18%, rgba(57, 255, 136, 0.04), transparent),
+      linear-gradient(rgba(24, 53, 42, 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 53, 42, 0.35) 1px, transparent 1px);
+    background-size:
+      100% 100%,
+      100% 100%,
+      64px 64px,
+      64px 64px;
+  }
+
+  .hero-noise {
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
+    mix-blend-mode: overlay;
+  }
+
+  .hero-sbv-layer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 4vh;
+    will-change: transform;
+    padding-inline: 8vw;
+  }
+
+  .hero-sbv-mark {
+    user-select: none;
+    display: block;
+    width: max-content;
+    margin-inline: auto;
+    transform: translate(-3%, -6%);
+    font-size: clamp(18rem, 44vw, 40rem);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: rgba(57, 255, 136, 0.05);
+    -webkit-text-stroke: 1.5px rgba(57, 255, 136, 0.14);
+    paint-order: stroke fill;
+    text-shadow: none;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, transparent 92%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
