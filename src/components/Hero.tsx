@@ -10,7 +10,7 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const { scroll, mx, my, reduced } = useHeroParallax(sectionRef);
 
-  const sbvTransform = reduced
+  const logoTransform = reduced
     ? undefined
     : `translate3d(${mx * 10}px, ${scroll * 0.55 + my * 10}px, 0)`;
 
@@ -21,11 +21,18 @@ export function Hero() {
     >
       <div className="hero-noise pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
-        className="hero-sbv-layer pointer-events-none absolute inset-0"
-        style={{ transform: sbvTransform }}
+        className="hero-logo-layer pointer-events-none absolute inset-0"
+        style={{ transform: logoTransform }}
         aria-hidden="true"
       >
-        <span className="hero-sbv-mark">SBV</span>
+        <img
+          src="/scambait-village-logo.png"
+          alt=""
+          className="hero-logo-mark"
+          width={1024}
+          height={1024}
+          decoding="async"
+        />
       </div>
 
       <div className="relative mx-auto flex min-h-[72vh] max-w-7xl flex-col justify-center px-4 py-14 sm:px-6 lg:px-8 lg:py-16">

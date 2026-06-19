@@ -67,30 +67,25 @@
     mix-blend-mode: overlay;
   }
 
-  .hero-sbv-layer {
+  .hero-logo-layer {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     padding-top: 4vh;
     will-change: transform;
-    padding-inline: 8vw;
+    padding-inline: 4vw;
   }
 
-  .hero-sbv-mark {
-    user-select: none;
+  .hero-logo-mark {
     display: block;
-    width: max-content;
+    width: clamp(22rem, 52vw, 46rem);
+    height: auto;
+    max-width: min(92vw, 46rem);
     margin-inline: auto;
-    transform: translate(-3%, -6%);
-    font-size: clamp(18rem, 44vw, 40rem);
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    color: rgba(57, 255, 136, 0.05);
-    -webkit-text-stroke: 1.5px rgba(57, 255, 136, 0.14);
-    paint-order: stroke fill;
-    text-shadow: none;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, transparent 92%);
+    transform: translate(-2%, -6%);
+    opacity: 0.12;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, transparent 92%);
+    user-select: none;
   }
 }
 
