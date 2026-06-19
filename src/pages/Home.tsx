@@ -7,6 +7,7 @@ import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { SectionHeader } from '../components/SectionHeader';
 import { VillageAboutSection } from '../components/VillageAboutSection';
+import { CfpCalloutSection } from '../components/CfpCalloutSection';
 import { Hero } from '../components/Hero';
 import { Badge } from '../components/Badge';
 
@@ -19,14 +20,7 @@ export function Home() {
 
       <VillageAboutSection />
 
-      <section className="border-y border-village-border py-16 md:py-20">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <p className="max-w-xl text-lg leading-relaxed text-village-text">
-            Got research, tooling, or field stories from the anti-scam front line?
-          </p>
-          <Button href={forms.speakerSubmission}>Submit to CFP</Button>
-        </div>
-      </section>
+      <CfpCalloutSection />
 
       <section className="border-y border-village-border bg-village-soft py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

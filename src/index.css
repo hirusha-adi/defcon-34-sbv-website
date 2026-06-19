@@ -102,6 +102,14 @@
   .countdown-tick-in {
     animation: countdown-tick-in 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
+
+  .cfp-submit-btn {
+    background-color: var(--color-village-cyan);
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.07) 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
 }
 
 @keyframes countdown-tick-out {
