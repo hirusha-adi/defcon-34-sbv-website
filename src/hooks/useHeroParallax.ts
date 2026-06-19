@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
+export interface HeroCursorRef {
+  x: number;
+  y: number;
+  active: boolean;
+}
+
 interface ParallaxState {
   scroll: number;
   mx: number;
   my: number;
   reduced: boolean;
+  cursorRef: RefObject<HeroCursorRef>;
 }
 
 export function useHeroParallax(ref: RefObject<HTMLElement | null>): ParallaxState {
-  const [state, setState] = useState<ParallaxState>({
-    scroll: 0,
-    mx: 0,
-    my: 0,
-    reduced: false,
-  });
+  const [state, setState] = useState({ scroll: 0, mx: 0, my: 0, reduced: false });
+  const cursorRef = useRef<HeroCursorRef>({ x: 0, y: 0, active: false });
   const rafRef = useRef(0);
 
   useEffect(() => {
@@ -21,12 +24,11 @@ export function useHeroParallax(ref: RefObject<HTMLElement | null>): ParallaxSta
     setState((s) => ({ ...s, reduced }));
 
     const el = ref.current;
-    if (!el || reduced) return;
+    if (!el) return;
 
     const updateScroll = () => {
       const rect = el.getBoundingClientRect();
-      const scroll = rect.top * 0.35;
-      setState((s) => ({ ...s, scroll }));
+      setState((s) => ({ ...s, scroll: rect.top * 0.12 }));
     };
 
     const onScroll = () => {
@@ -36,12 +38,22 @@ export function useHeroParallax(ref: RefObject<HTMLElement | null>): ParallaxSta
 
     const onMove = (e: MouseEvent) => {
       const rect = el.getBoundingClientRect();
+      cursorRef.current.x = e.clientX - rect.left;
+      cursorRef.current.y = e.clientY - rect.top;
+      cursorRef.current.active = true;
+
+      if (reduced) return;
+
       const mx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
       const my = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-      setState((s) => ({ ...s, mx, my }));
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(() => setState((s) => ({ ...s, mx, my })));
     };
 
-    const onLeave = () => setState((s) => ({ ...s, mx: 0, my: 0 }));
+    const onLeave = () => {
+      cursorRef.current.active = false;
+      if (!reduced) setState((s) => ({ ...s, mx: 0, my: 0 }));
+    };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     el.addEventListener('mousemove', onMove);
@@ -56,5 +68,5 @@ export function useHeroParallax(ref: RefObject<HTMLElement | null>): ParallaxSta
     };
   }, [ref]);
 
-  return state;
+  return { ...state, cursorRef };
 }

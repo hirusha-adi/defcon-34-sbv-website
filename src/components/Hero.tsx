@@ -4,21 +4,23 @@ import { event } from '../data/event';
 import { forms } from '../data/forms';
 import { signalBoard } from '../data/resources';
 import { Button } from './Button';
+import { HeroGrid } from './HeroGrid';
 import { useHeroParallax } from '../hooks/useHeroParallax';
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scroll, mx, my, reduced } = useHeroParallax(sectionRef);
+  const { scroll, mx, my, reduced, cursorRef } = useHeroParallax(sectionRef);
 
   const logoTransform = reduced
     ? undefined
-    : `translate3d(${mx * 10}px, ${scroll * 0.55 + my * 10}px, 0)`;
+    : `translate3d(${mx * 3}px, ${scroll * 0.2 + my * 3}px, 0)`;
 
   return (
     <section
       ref={sectionRef}
       className="hero-section relative min-h-[72vh] overflow-x-clip border-b border-village-border"
     >
+      <HeroGrid cursorRef={cursorRef} reduced={reduced} />
       <div className="hero-noise pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
         className="hero-logo-layer pointer-events-none absolute inset-0"
