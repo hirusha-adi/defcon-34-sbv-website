@@ -13,7 +13,7 @@ export function Hero() {
 
   const logoTransform = reduced
     ? undefined
-    : `translate3d(${mx * 3}px, ${scroll * 0.2 + my * 3}px, 0)`;
+    : `translate3d(${mx * 1.5}px, ${scroll * 0.08 + my * 1.5}px, 0)`;
 
   return (
     <section
