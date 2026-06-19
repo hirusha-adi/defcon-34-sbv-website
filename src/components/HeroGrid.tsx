@@ -5,6 +5,7 @@ const CELL = 64;
 const INFLUENCE = 110;
 const MAX_PUSH = 16;
 const LERP = 0.1;
+const BOTTOM_FADE = 240;
 
 interface CellState {
   ox: number;
@@ -100,15 +101,19 @@ export function HeroGrid({ cursorRef, reduced }: HeroGridProps) {
           const y = row * CELL + cell.oy;
           const drift = Math.hypot(cell.ox, cell.oy);
           const broken = drift > 1.5;
+          const distFromBottom = h - (y + CELL);
+          const verticalFade =
+            distFromBottom < BOTTOM_FADE ? Math.max(0, distFromBottom / BOTTOM_FADE) : 1;
+          const baseAlpha = 0.38 * verticalFade;
 
           if (broken) {
-            ctx.fillStyle = `rgba(57, 255, 136, ${0.015 + (drift / MAX_PUSH) * 0.025})`;
+            ctx.fillStyle = `rgba(57, 255, 136, ${(0.015 + (drift / MAX_PUSH) * 0.025) * verticalFade})`;
             ctx.fillRect(x + 1, y + 1, CELL - 2, CELL - 2);
           }
 
           ctx.strokeStyle = broken
-            ? `rgba(38, 99, 71, ${0.25 + (1 - Math.min(1, drift / MAX_PUSH)) * 0.35})`
-            : 'rgba(24, 53, 42, 0.38)';
+            ? `rgba(38, 99, 71, ${(0.25 + (1 - Math.min(1, drift / MAX_PUSH)) * 0.35) * verticalFade})`
+            : `rgba(24, 53, 42, ${baseAlpha})`;
           ctx.lineWidth = 1;
           ctx.strokeRect(x + 0.5, y + 0.5, CELL - 1, CELL - 1);
 

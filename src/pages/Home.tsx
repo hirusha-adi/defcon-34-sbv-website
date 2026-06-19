@@ -7,26 +7,9 @@ import { resourceGroups } from '../data/resources';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { SectionHeader } from '../components/SectionHeader';
+import { VillageAboutSection } from '../components/VillageAboutSection';
 import { Hero } from '../components/Hero';
 import { Badge } from '../components/Badge';
-
-const villageCards = [
-  {
-    title: 'Scam awareness',
-    description:
-      'Learn how scams work — phone fraud, remote-access abuse, social engineering, and AI-generated threats — before someone you love gets hit.',
-  },
-  {
-    title: 'Ethical scambaiting education',
-    description:
-      'Responsible disruption, research ethics, and field lessons from people who waste scammer time without creating new harm.',
-  },
-  {
-    title: 'Community anti-fraud tooling',
-    description:
-      'Dashboards, automation, reporting pipelines, and shared tools built by defenders, researchers, and trust & safety teams.',
-  },
-];
 
 export function Home() {
   const previewResources = resourceGroups.flatMap((g) => g.cards).slice(0, 4);
@@ -35,23 +18,7 @@ export function Home() {
     <>
       <Hero />
 
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="What this is"
-            title="Community-driven scam disruption"
-            description="For scambaiters, researchers, defenders, trust & safety teams, OSINT practitioners, and curious hackers."
-          />
-          <div className="grid gap-6 md:grid-cols-3">
-            {villageCards.map((card) => (
-              <Card key={card.title} interactive>
-                <h3 className="text-lg font-bold text-village-text">{card.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-village-muted">{card.description}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <VillageAboutSection />
 
       <section className="border-y border-village-border bg-village-soft py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

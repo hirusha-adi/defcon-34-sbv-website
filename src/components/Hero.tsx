@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="hero-section relative min-h-[72vh] overflow-x-clip border-b border-village-border"
+      className="hero-section relative min-h-[72vh] overflow-x-clip"
     >
       <HeroGrid cursorRef={cursorRef} reduced={reduced} />
       <div className="hero-noise pointer-events-none absolute inset-0" aria-hidden="true" />
@@ -36,6 +36,8 @@ export function Hero() {
           decoding="async"
         />
       </div>
+
+      <div className="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-[2]" aria-hidden="true" />
 
       <div className="relative mx-auto flex min-h-[72vh] max-w-7xl flex-col justify-center px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="relative z-10 grid items-end gap-12 lg:grid-cols-[1fr_340px]">

@@ -47,14 +47,27 @@
 @layer components {
   .hero-section {
     background-color: var(--color-village-bg);
-    background-image:
-      linear-gradient(180deg, transparent 60%, rgba(5, 8, 7, 0.95)),
-      radial-gradient(ellipse 70% 55% at 72% 18%, rgba(57, 255, 136, 0.04), transparent);
-    background-size: 100% 100%, 100% 100%;
+    background-image: radial-gradient(
+      ellipse 70% 55% at 72% 18%,
+      rgba(57, 255, 136, 0.04),
+      transparent
+    );
+  }
+
+  .hero-bottom-fade {
+    height: min(42vh, 280px);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(5, 8, 7, 0.35) 30%,
+      rgba(5, 8, 7, 0.75) 60%,
+      #050807 100%
+    );
   }
 
   .hero-noise {
     opacity: 0.35;
+    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 128px 128px;
