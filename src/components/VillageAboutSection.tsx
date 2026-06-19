@@ -87,13 +87,13 @@ function ActivityIcon({ icon }: { icon: string }) {
 
 function DashboardPreview() {
   return (
-    <div className="relative mt-8 overflow-hidden rounded-lg border border-village-border bg-village-bg/80">
-      <div className="grid grid-cols-3 gap-2 p-3">
+    <div className="mt-6 flex min-h-[200px] flex-1 flex-col overflow-hidden rounded-lg border border-village-border bg-village-bg/80">
+      <div className="grid flex-1 grid-cols-3 gap-2 p-3">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="rounded border border-village-border/60 bg-village-soft p-2">
-            <div className="mb-2 h-1 w-8 rounded bg-village-border" />
-            <div className="flex h-10 items-end gap-0.5">
-              {[40, 65, 30, 80, 55, 70].map((h, j) => (
+          <div key={i} className="flex flex-col rounded border border-village-border/60 bg-village-soft p-2">
+            <div className="mb-2 h-1 w-8 shrink-0 rounded bg-village-border" />
+            <div className="flex min-h-[72px] flex-1 items-end gap-0.5">
+              {[40, 65, 30, 80, 55, 70, 45, 90].map((h, j) => (
                 <div
                   key={j}
                   className="flex-1 rounded-sm bg-village-border-strong/40"
@@ -104,12 +104,21 @@ function DashboardPreview() {
           </div>
         ))}
       </div>
-      <div className="border-t border-village-border/60 px-3 py-2">
+      <div className="border-t border-village-border/60 px-3 py-3">
+        <div className="mb-2 flex gap-1">
+          {[...Array(32)].map((_, i) => (
+            <div
+              key={i}
+              className="h-8 flex-1 rounded-sm bg-village-border/25"
+              style={{ opacity: 0.35 + (i % 7) * 0.08 }}
+            />
+          ))}
+        </div>
         <div className="flex gap-1">
           {[...Array(24)].map((_, i) => (
             <div
               key={i}
-              className="h-3 flex-1 rounded-sm bg-village-border/30"
+              className="h-2 flex-1 rounded-sm bg-village-border/30"
               style={{ opacity: 0.4 + (i % 5) * 0.1 }}
             />
           ))}
@@ -136,15 +145,15 @@ export function VillageAboutSection() {
           </div>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="flex flex-col rounded-2xl border border-village-border bg-village-surface/80 p-6 shadow-panel lg:p-8">
-            <div className="flex items-center gap-2 border-b border-village-border pb-4">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+          <div className="flex flex-col rounded-2xl border border-village-border bg-village-surface/80 p-6 shadow-panel lg:min-h-full lg:p-8">
+            <div className="flex shrink-0 items-center gap-2 border-b border-village-border pb-4">
               <MissionIcon />
               <span className="font-mono text-xs tracking-[0.2em] text-village-danger">
                 {missionDirective.label.toUpperCase()}
               </span>
             </div>
-            <p className="mt-5 flex-1 text-sm leading-7 text-village-muted md:text-base">
+            <p className="mt-5 shrink-0 text-sm leading-7 text-village-muted md:text-base">
               {missionDirective.body}
             </p>
             <DashboardPreview />
