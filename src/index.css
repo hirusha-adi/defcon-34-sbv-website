@@ -94,6 +94,32 @@
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, transparent 92%);
     user-select: none;
   }
+
+  .countdown-tick-out {
+    animation: countdown-tick-out 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .countdown-tick-in {
+    animation: countdown-tick-in 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+@keyframes countdown-tick-out {
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes countdown-tick-in {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

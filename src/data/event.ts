@@ -3,6 +3,7 @@ export const event = {
   shortName: 'ScamBait Village',
   conference: 'DEF CON 34',
   dates: 'August 6–9, 2026',
+  startDate: '2026-08-06T10:00:00-07:00',
   location: 'Las Vegas Convention Center West Hall, Las Vegas, Nevada',
   locationShort: 'Las Vegas Convention Center West Hall',
   tagline: 'Waste scammer time. Protect real people.',

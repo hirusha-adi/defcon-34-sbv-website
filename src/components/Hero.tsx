@@ -2,8 +2,8 @@ import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { event } from '../data/event';
 import { forms } from '../data/forms';
-import { signalBoard } from '../data/resources';
 import { Button } from './Button';
+import { HeroCountdown } from './HeroCountdown';
 import { HeroGrid } from './HeroGrid';
 import { useHeroParallax } from '../hooks/useHeroParallax';
 
@@ -76,29 +76,10 @@ export function Hero() {
             </div>
           </div>
 
-          <aside className="hidden border-l border-village-border pl-8 lg:block">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-village-muted">
-              Village status
-            </p>
-            <dl className="mt-5 space-y-4">
-              {signalBoard.map((item) => (
-                <div key={item.label} className="flex items-baseline justify-between gap-4">
-                  <dt className="font-mono text-xs text-village-muted">{item.label}</dt>
-                  <dd className="font-mono text-xs text-village-text">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </aside>
+          <HeroCountdown className="hidden border-l border-village-border pl-8 lg:block" />
         </div>
 
-        <div className="relative z-10 mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-village-border bg-village-border lg:hidden">
-          {signalBoard.map((item) => (
-            <div key={item.label} className="bg-village-bg px-4 py-3">
-              <p className="font-mono text-[10px] text-village-muted">{item.label}</p>
-              <p className="mt-1 font-mono text-xs text-village-text">{item.value}</p>
-            </div>
-          ))}
-        </div>
+        <HeroCountdown className="relative z-10 mt-12 rounded-lg border border-village-border bg-village-bg/80 p-5 lg:hidden" />
       </div>
     </section>
   );
