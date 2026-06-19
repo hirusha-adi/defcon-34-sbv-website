@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { event } from '../data/event';
 import { forms } from '../data/forms';
-import { homeHypeCards } from '../data/resources';
 import { scheduleDays } from '../data/schedule';
 import { resourceGroups } from '../data/resources';
 import { Button } from '../components/Button';
@@ -19,25 +18,6 @@ export function Home() {
       <Hero />
 
       <VillageAboutSection />
-
-      <section className="border-y border-village-border bg-village-soft py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Village programming"
-            title="Talks, workshops, demos, and more"
-            description="The schedule is compiling. CFP signal opens soon."
-          />
-          <div className="grid gap-px overflow-hidden rounded-xl border border-village-border bg-village-border sm:grid-cols-2 lg:grid-cols-3">
-            {homeHypeCards.map((card) => (
-              <div key={card.title} className="bg-village-bg p-6">
-                <span className="font-mono text-[11px] text-village-border-strong">{card.index}</span>
-                <h3 className="mt-3 text-base font-semibold text-village-text">{card.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-village-muted">{card.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="border-y border-village-border py-16 md:py-20">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
