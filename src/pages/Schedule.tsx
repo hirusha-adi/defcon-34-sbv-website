@@ -34,7 +34,7 @@ export function Schedule() {
                     key={filter}
                     type="button"
                     onClick={() => setActiveFilter(i)}
-                    className={`border px-3 py-1.5 font-mono text-xs transition focus:outline-none focus:ring-2 focus:ring-village-green ${
+                    className={`rounded-lg border px-3 py-1.5 font-mono text-xs transition focus:outline-none focus:ring-2 focus:ring-village-green ${
                       activeFilter === i
                         ? 'border-village-text text-village-text'
                         : 'border-village-border text-village-muted hover:border-village-border-strong'
@@ -46,7 +46,7 @@ export function Schedule() {
               </div>
             </div>
 
-            <div className="mt-8 flex gap-0 border-b border-village-border" role="tablist">
+            <div className="mt-8 flex overflow-hidden rounded-xl border border-village-border" role="tablist">
               {scheduleDays.map((day, i) => (
                 <button
                   key={day.day}
@@ -54,7 +54,7 @@ export function Schedule() {
                   role="tab"
                   aria-selected={activeDay === i}
                   onClick={() => setActiveDay(i)}
-                  className={`min-w-[5rem] flex-1 border-b-2 px-3 py-3 text-left transition focus:outline-none focus:ring-2 focus:ring-village-green ${
+                  className={`min-w-[5rem] flex-1 border-b-2 px-3 py-3 text-left transition first:rounded-tl-xl last:rounded-tr-xl focus:outline-none focus:ring-2 focus:ring-village-green ${
                     activeDay === i
                       ? 'border-b-village-text text-village-text'
                       : 'border-b-transparent text-village-muted hover:text-village-text'
@@ -70,11 +70,11 @@ export function Schedule() {
               {placeholderSessions.map((session) => (
                 <article
                   key={session.title}
-                  className="grid gap-4 border border-village-border bg-village-surface/60 p-5 sm:grid-cols-[7rem_1fr]"
+                  className="grid gap-4 rounded-2xl border border-village-border bg-village-surface/60 p-5 shadow-panel sm:grid-cols-[7rem_1fr]"
                 >
                   <div>
                     <p className="font-mono text-sm font-bold text-village-text">{session.time}</p>
-                    <span className="mt-2 inline-block border border-village-border px-2 py-0.5 font-mono text-[10px] text-village-muted">
+                    <span className="mt-2 inline-block rounded-md border border-village-border px-2 py-0.5 font-mono text-[10px] text-village-muted">
                       {session.type}
                     </span>
                   </div>
@@ -89,12 +89,12 @@ export function Schedule() {
                 </article>
               ))}
 
-              <article className="relative overflow-hidden border border-village-border bg-village-surface/40 p-5">
+              <article className="relative overflow-hidden rounded-2xl border border-village-border bg-village-surface/40 p-5 shadow-panel">
                 <div className="pointer-events-none select-none blur-[2px] opacity-40">
                   <div className="grid gap-4 sm:grid-cols-[7rem_1fr]">
                     <div>
                       <p className="font-mono text-sm text-village-muted">--:--</p>
-                      <span className="mt-2 inline-block border border-village-border px-2 py-0.5 font-mono text-[10px] text-village-muted">
+                      <span className="mt-2 inline-block rounded-md border border-village-border px-2 py-0.5 font-mono text-[10px] text-village-muted">
                         TBA
                       </span>
                     </div>
@@ -113,7 +113,7 @@ export function Schedule() {
           </div>
 
           <aside className="space-y-6">
-            <div className="border border-village-border bg-village-surface/80 p-5">
+            <div className="rounded-2xl border border-village-border bg-village-surface/80 p-5 shadow-panel">
               <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-village-muted">
                 <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M4 10v4h4l5 4V6L8 10H4z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
@@ -133,13 +133,13 @@ export function Schedule() {
               </div>
               <a
                 href={forms.speakerSubmission}
-                className="mt-5 block w-full border border-village-text bg-village-text py-2.5 text-center font-mono text-xs font-bold uppercase text-village-bg transition hover:bg-village-green hover:border-village-green focus:outline-none focus:ring-2 focus:ring-village-green"
+                className="mt-5 block w-full rounded-xl border border-village-text bg-village-text py-2.5 text-center font-mono text-xs font-bold uppercase text-village-bg transition hover:border-village-green hover:bg-village-green focus:outline-none focus:ring-2 focus:ring-village-green"
               >
                 Submit proposal -&gt;
               </a>
             </div>
 
-            <div className="flex min-h-[140px] items-center justify-center border border-dashed border-village-border p-6">
+            <div className="flex min-h-[140px] items-center justify-center rounded-2xl border border-dashed border-village-border p-6">
               <p className="font-mono text-[10px] uppercase tracking-widest text-village-muted">
                 [Advert_space_unallocated]
               </p>
