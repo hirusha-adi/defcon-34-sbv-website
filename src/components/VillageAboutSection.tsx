@@ -1,4 +1,7 @@
 import { activityLog, missionDirective, villagePillars } from '../data/villageAbout';
+import { ContentSection } from './ContentSection';
+import { SectionHeader } from './SectionHeader';
+import { Card } from './Card';
 
 const accentTitle: Record<string, string> = {
   cyan: 'text-village-cyan',
@@ -87,10 +90,10 @@ function ActivityIcon({ icon }: { icon: string }) {
 
 function DashboardPreview() {
   return (
-    <div className="mt-6 flex min-h-[200px] flex-1 flex-col overflow-hidden rounded-lg border border-village-border bg-village-bg/80">
+    <div className="mt-6 flex min-h-[200px] flex-1 flex-col overflow-hidden rounded-2xl border border-village-border bg-village-bg/80">
       <div className="grid flex-1 grid-cols-3 gap-2 p-3">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="flex flex-col rounded border border-village-border/60 bg-village-soft p-2">
+          <div key={i} className="flex flex-col rounded-xl border border-village-border/60 bg-village-soft p-2">
             <div className="mb-2 h-1 w-8 shrink-0 rounded bg-village-border" />
             <div className="flex min-h-[72px] flex-1 items-end gap-0.5">
               {[40, 65, 30, 80, 55, 70, 45, 90].map((h, j) => (
@@ -130,83 +133,79 @@ function DashboardPreview() {
 
 export function VillageAboutSection() {
   return (
-    <section className="relative py-16 md:py-24">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 flex items-start gap-4">
-          <span className="mt-2 h-10 w-1 shrink-0 rounded-full bg-village-text" aria-hidden="true" />
-          <div>
-            <h2 className="text-3xl font-black tracking-tight text-village-text md:text-4xl">
-              About the Village
-            </h2>
-            <p className="mt-2 max-w-xl text-base text-village-muted md:text-lg">
-              Built for the people fighting scams from the keyboard up.
-            </p>
-          </div>
-        </div>
+    <ContentSection>
+      <div className="relative">
+        <div className="bg-grid pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" />
+        <div className="relative">
+          <SectionHeader
+            eyebrow="About"
+            title="About the Village"
+            description="Built for the people fighting scams from the keyboard up."
+          />
 
-        <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-          <div className="flex flex-col rounded-2xl border border-village-border bg-village-surface/80 p-6 shadow-panel lg:min-h-full lg:p-8">
-            <div className="flex shrink-0 items-center gap-2 border-b border-village-border pb-4">
-              <MissionIcon />
-              <span className="font-mono text-xs tracking-[0.2em] text-village-danger">
-                {missionDirective.label.toUpperCase()}
-              </span>
-            </div>
-            <p className="mt-5 shrink-0 text-sm leading-7 text-village-muted md:text-base">
-              {missionDirective.body}
-            </p>
-            <DashboardPreview />
-          </div>
-
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {villagePillars.map((pillar) => (
-                <div
-                  key={pillar.title}
-                  className={`relative overflow-hidden rounded-xl border border-village-border border-l-4 bg-village-surface/60 p-5 ${accentBorder[pillar.accent]}`}
-                >
-                  <PillarWatermark icon={pillar.icon} />
-                  <h3
-                    className={`relative text-base font-bold ${
-                      pillar.title === 'Ethical Research'
-                        ? 'text-village-text'
-                        : accentTitle[pillar.accent]
-                    }`}
-                  >
-                    {pillar.title}
-                  </h3>
-                  <p className="relative mt-2 text-sm leading-6 text-village-muted">
-                    {pillar.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="rounded-2xl border border-village-border bg-village-surface/80 p-6">
-              <div className="mb-5 flex items-center gap-2">
-                <span className="h-3 w-3 rounded-sm border border-village-text/60" aria-hidden="true" />
-                <span className="font-mono text-xs tracking-[0.2em] text-village-text">
-                  ACTIVITY LOG
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+            <Card className="flex flex-col lg:min-h-full lg:p-8">
+              <div className="flex shrink-0 items-center gap-2 border-b border-village-border pb-4">
+                <MissionIcon />
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-village-danger">
+                  {missionDirective.label}
                 </span>
               </div>
-              <ul className="space-y-5">
-                {activityLog.map((item) => (
-                  <li key={item.title} className="flex gap-4">
-                    <ActivityIcon icon={item.icon} />
-                    <div>
-                      <p className={`text-sm font-semibold ${accentTitle[item.accent]}`}>
-                        {item.title}
-                      </p>
-                      <p className="mt-1 text-sm leading-6 text-village-muted">{item.description}</p>
-                    </div>
-                  </li>
+              <p className="mt-5 shrink-0 text-base leading-7 text-village-muted">
+                {missionDirective.body}
+              </p>
+              <DashboardPreview />
+            </Card>
+
+            <div className="flex flex-col gap-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                {villagePillars.map((pillar) => (
+                  <div
+                    key={pillar.title}
+                    className={`relative overflow-hidden rounded-2xl border border-village-border border-l-4 bg-village-surface/80 p-5 shadow-panel ${accentBorder[pillar.accent]}`}
+                  >
+                    <PillarWatermark icon={pillar.icon} />
+                    <h3
+                      className={`relative text-base font-bold ${
+                        pillar.title === 'Ethical Research'
+                          ? 'text-village-text'
+                          : accentTitle[pillar.accent]
+                      }`}
+                    >
+                      {pillar.title}
+                    </h3>
+                    <p className="relative mt-2 text-sm leading-6 text-village-muted">
+                      {pillar.description}
+                    </p>
+                  </div>
                 ))}
-              </ul>
+              </div>
+
+              <Card>
+                <div className="mb-5 flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-sm border border-village-text/60" aria-hidden="true" />
+                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-village-muted">
+                    Activity log
+                  </span>
+                </div>
+                <ul className="space-y-5">
+                  {activityLog.map((item) => (
+                    <li key={item.title} className="flex gap-4">
+                      <ActivityIcon icon={item.icon} />
+                      <div>
+                        <p className={`text-sm font-semibold ${accentTitle[item.accent]}`}>
+                          {item.title}
+                        </p>
+                        <p className="mt-1 text-sm leading-6 text-village-muted">{item.description}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </ContentSection>
   );
 }

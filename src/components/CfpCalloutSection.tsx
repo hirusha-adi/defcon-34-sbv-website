@@ -1,4 +1,6 @@
 import { forms } from '../data/forms';
+import { ContentSection } from './ContentSection';
+import { Button } from './Button';
 
 function MegaphoneIcon() {
   return (
@@ -39,9 +41,8 @@ function CornerAccent({ className }: { className: string }) {
 
 export function CfpCalloutSection() {
   return (
-    <section className="relative py-12 md:py-16">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-30" aria-hidden="true" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <ContentSection variant="soft">
+      <div className="relative">
         <div className="relative rounded-2xl border border-village-green/20 bg-village-surface/80 px-6 py-10 text-center shadow-panel sm:px-10 sm:py-12">
           <CornerAccent className="left-5 top-5" />
           <CornerAccent className="bottom-5 right-5 rotate-180" />
@@ -50,26 +51,23 @@ export function CfpCalloutSection() {
             <MegaphoneIcon />
           </div>
 
-          <h2 className="text-2xl font-black tracking-tight text-village-green md:text-3xl">
+          <h2 className="text-3xl font-black tracking-[-0.02em] text-village-green md:text-4xl">
             Call for Papers
           </h2>
-          <p className="mt-3 text-lg font-bold text-village-text md:text-xl">
+          <p className="mt-3 text-base font-bold leading-7 text-village-text md:text-lg">
             Bring your research, tools, stories, and demos.
           </p>
-          <p className="mx-auto mt-4 max-w-lg text-sm leading-7 text-village-muted md:text-base">
+          <p className="mx-auto mt-4 max-w-lg text-base leading-7 text-village-muted">
             We are looking for speakers to present on topics related to scam operations, defense
             mechanisms, OSINT, and reverse engineering. Help educate the community and disrupt fraud.
           </p>
 
-          <a
-            href={forms.speakerSubmission}
-            className="cfp-submit-btn mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-mono text-sm font-bold text-village-bg transition hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-village-green focus:ring-offset-2 focus:ring-offset-village-surface"
-          >
+          <Button href={forms.speakerSubmission} className="cfp-submit-btn mt-8 gap-2 !text-village-bg">
             Open CFP Submission Form
             <ExternalLinkIcon />
-          </a>
+          </Button>
         </div>
       </div>
-    </section>
+    </ContentSection>
   );
 }
