@@ -9,15 +9,14 @@ interface ButtonProps {
 }
 
 const baseClasses =
-  'inline-flex items-center justify-center rounded-xl px-5 py-3 font-mono text-sm font-bold transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-village-bg';
+  'inline-flex items-center justify-center gap-2 rounded-none border-[3px] px-5 py-3 font-display text-xs font-bold uppercase tracking-wide transition-transform duration-150 ease-out-strong focus:outline-none';
 
 const variantClasses = {
-  primary:
-    'border border-village-green bg-village-green text-black hover:brightness-105 focus:ring-village-green',
+  primary: 'border-paper bg-yellow text-ink shadow-pix hover:shadow-pix-lg hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none',
   secondary:
-    'border border-village-border-strong text-village-text hover:border-village-green hover:text-village-green focus:ring-village-cyan',
+    'border-paper bg-panel text-paper shadow-pix hover:shadow-pix-lg hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none',
   ghost:
-    'border border-transparent text-village-muted underline-offset-4 hover:text-village-green hover:underline focus:ring-village-cyan',
+    'border-transparent bg-transparent px-2 py-2 text-paper-dim underline decoration-dotted underline-offset-4 hover:text-yellow',
 };
 
 export function Button({

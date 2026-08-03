@@ -14,11 +14,11 @@ export function Contact() {
         description="Questions, press, sponsors, volunteers, and community collaborators can reach the village team here."
       />
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {contactCards.map((card) => (
-          <Card key={card.title} interactive>
-            <h3 className="text-lg font-bold text-village-text">{card.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-village-muted">{card.description}</p>
+          <Card key={card.title} interactive className="flex flex-col">
+            <h3 className="text-lg font-bold text-paper">{card.title}</h3>
+            <p className="mt-2 flex-1 text-sm leading-6 text-paper-dim">{card.description}</p>
             <div className="mt-4">
               <Button href={card.href} variant="secondary" className="!text-xs">
                 {card.cta}

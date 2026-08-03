@@ -9,10 +9,10 @@ export function FilterChip({ label, active = false, onClick }: FilterChipProps) 
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-3 py-1 font-mono text-xs transition focus:outline-none focus:ring-2 focus:ring-village-green focus:ring-offset-2 focus:ring-offset-village-bg ${
+      className={`rounded-none border-2 px-3 py-1.5 font-mono text-xs uppercase tracking-wide transition focus:outline-none ${
         active
-          ? 'border-village-green/40 bg-village-green/10 text-village-green'
-          : 'border-village-border bg-village-soft text-village-muted hover:border-village-border-strong hover:text-village-text'
+          ? 'border-yellow bg-yellow/10 text-yellow'
+          : 'border-panel-2 bg-panel text-paper-dim hover:border-paper-dim hover:text-paper'
       }`}
     >
       {label}

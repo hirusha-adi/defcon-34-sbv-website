@@ -7,12 +7,12 @@ interface WarningPanelProps {
 
 const variantClasses = {
   danger: {
-    panel: 'border-village-danger/30 bg-village-danger/5',
-    title: 'text-village-danger',
+    panel: 'border-coral bg-coral/5',
+    title: 'text-coral',
   },
   warning: {
-    panel: 'border-village-warning/30 bg-village-warning/5',
-    title: 'text-village-warning',
+    panel: 'border-yellow bg-yellow/5',
+    title: 'text-yellow',
   },
 };
 
@@ -25,11 +25,11 @@ export function WarningPanel({
   const styles = variantClasses[variant];
 
   return (
-    <div className={`rounded-2xl border p-6 ${styles.panel} ${className}`}>
+    <div className={`rounded-none border-[3px] p-6 ${styles.panel} ${className}`}>
       {title && (
-        <p className={`font-mono text-xs uppercase tracking-widest ${styles.title}`}>{title}</p>
+        <p className={`font-mono text-xs font-bold uppercase tracking-widest ${styles.title}`}>{title}</p>
       )}
-      <div className={title ? 'mt-3 text-base leading-7 text-village-text' : ''}>{children}</div>
+      <div className={title ? 'mt-3 text-base leading-7 text-paper' : ''}>{children}</div>
     </div>
   );
 }

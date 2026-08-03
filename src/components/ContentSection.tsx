@@ -9,11 +9,10 @@ export function ContentSection({
   variant = 'default',
   className = '',
 }: ContentSectionProps) {
-  const variantClass =
-    variant === 'soft' ? 'border-y border-village-border bg-village-soft' : '';
+  const variantClass = variant === 'soft' ? 'border-y-[3px] border-panel-2 bg-panel/40' : '';
 
   return (
-    <section className={`py-16 md:py-24 ${variantClass} ${className}`}>
+    <section className={`py-[clamp(4rem,8vw,6rem)] ${variantClass} ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
   );

@@ -1,66 +1,47 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { event } from '../data/event';
 import { forms } from '../data/forms';
 import { Button } from './Button';
 import { HeroCountdown } from './HeroCountdown';
-import { HeroGrid } from './HeroGrid';
-import { useHeroParallax } from '../hooks/useHeroParallax';
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scroll, mx, my, reduced, cursorRef } = useHeroParallax(sectionRef);
-
-  const logoTransform = reduced
-    ? undefined
-    : `translate3d(${mx * 1.5}px, ${scroll * 0.08 + my * 1.5}px, 0)`;
-
   return (
-    <section
-      ref={sectionRef}
-      className="hero-section relative min-h-[72vh] overflow-x-clip"
-    >
-      <HeroGrid cursorRef={cursorRef} reduced={reduced} />
-      <div className="hero-noise pointer-events-none absolute inset-0" aria-hidden="true" />
+    <section className="relative overflow-hidden border-b-[3px] border-panel-2">
       <div
-        className="hero-logo-layer pointer-events-none absolute inset-0"
-        style={{ transform: logoTransform }}
+        className="pointer-events-none absolute inset-0 flex items-start justify-center pt-[6vh]"
         aria-hidden="true"
       >
         <img
           src="/scambait-village-logo.png"
           alt=""
-          className="hero-logo-mark"
           width={1024}
           height={1024}
           decoding="async"
+          className="w-[clamp(20rem,50vw,42rem)] max-w-[90vw] opacity-[0.08] mix-blend-screen"
+          style={{ maskImage: 'linear-gradient(180deg, black 0%, transparent 85%)' }}
         />
       </div>
 
-      <div className="hero-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 z-[2]" aria-hidden="true" />
-
-      <div className="relative mx-auto flex min-h-[72vh] max-w-7xl flex-col justify-center px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
-        <div className="relative z-10 grid items-end gap-12 lg:grid-cols-[1fr_340px]">
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+        <div className="grid items-end gap-12 lg:grid-cols-[1fr_320px]">
           <div className="max-w-3xl">
-            <p className="font-mono text-[11px] tracking-[0.2em] text-village-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-paper-dim">
               {event.conference}
-              <span className="mx-2 text-village-border-strong">/</span>
+              <span className="mx-2 text-panel-2">/</span>
               {event.dates}
             </p>
 
-            <h1 className="mt-5 text-[clamp(2.75rem,7vw,5.5rem)] font-black leading-[0.92] tracking-[-0.03em] text-village-text">
-              ScamBait
+            <h1 className="mt-6 font-display text-[clamp(1.9rem,6vw,3.75rem)] leading-[1.6] tracking-tight text-paper">
+              <span className="text-green">ScamBait</span>
               <br />
-              <span className="text-village-muted">Village</span>
+              Village
             </h1>
 
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-village-muted md:text-xl">
-              {event.tagline}. Scam intel, live demos, and community tooling at hacker summer camp.
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper-dim md:text-xl">
+              {event.tagline} Scam intel, live demos, and community tooling at hacker summer camp.
             </p>
 
-            <p className="mt-4 font-mono text-xs text-village-muted/80">
-              {event.locationShort}
-            </p>
+            <p className="mt-4 font-mono text-xs text-paper-dim/80">{event.locationShort}</p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Button href={forms.speakerSubmission}>Submit a Talk</Button>
@@ -69,17 +50,17 @@ export function Hero() {
               </Button>
               <Link
                 to="/schedule"
-                className="px-2 py-3 font-mono text-xs text-village-muted underline-offset-4 transition hover:text-village-text hover:underline focus:outline-none focus:ring-2 focus:ring-village-green focus:ring-offset-2 focus:ring-offset-village-bg"
+                className="px-2 py-3 font-mono text-xs text-paper-dim underline decoration-dotted underline-offset-4 transition hover:text-yellow focus:outline-none"
               >
                 Schedule status
               </Link>
             </div>
           </div>
 
-          <HeroCountdown className="hidden border-l border-village-border pl-8 lg:block" />
+          <HeroCountdown className="hidden lg:block" />
         </div>
 
-        <HeroCountdown className="relative z-10 mt-12 rounded-lg border border-village-border bg-village-bg/80 p-5 lg:hidden" />
+        <HeroCountdown className="relative mt-12 lg:hidden" />
       </div>
     </section>
   );

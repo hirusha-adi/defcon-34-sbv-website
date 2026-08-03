@@ -17,7 +17,7 @@ export function Resources() {
       />
 
       <WarningPanel variant="warning" className="mb-12">
-        <p className="font-mono text-xs text-village-warning">
+        <p className="font-mono text-xs text-yellow">
           Education only. No unauthorized access, malware, doxxing, harassment, or instructions
           that create new harm.
         </p>
@@ -30,8 +30,8 @@ export function Resources() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {group.cards.map((card) => (
                 <Card key={card.title} interactive>
-                  <h3 className="text-sm font-bold text-village-text">{card.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-village-muted">{card.description}</p>
+                  <h3 className="text-sm font-bold text-paper">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-paper-dim">{card.description}</p>
                   <Button href={card.href} variant="ghost" className="mt-4 !px-0 !py-0 !text-xs">
                     Coming soon →
                   </Button>

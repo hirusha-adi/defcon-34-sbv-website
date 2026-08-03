@@ -117,31 +117,37 @@ export const homeHypeCards = [
     title: 'Talks',
     description: 'Research, field stories, and fraud trend intelligence from the front line.',
     index: '01',
+    color: 'yellow' as const,
   },
   {
     title: 'Workshops',
     description: 'Hands-on sessions on scam recognition, defense, and community tooling.',
     index: '02',
+    color: 'mint' as const,
   },
   {
     title: 'Live Demos',
     description: 'Responsible demonstrations of scam patterns and defensive countermeasures.',
     index: '03',
+    color: 'sky' as const,
   },
   {
     title: 'Scam Awareness',
     description: 'Public education on how scams work and how to avoid them.',
     index: '04',
+    color: 'coral' as const,
   },
   {
     title: 'Community Tools',
     description: 'Dashboards, automation, reporting pipelines, and shared tooling.',
     index: '05',
+    color: 'violet' as const,
   },
   {
     title: 'Victim-Safety Education',
     description: 'Intervention, support, and harm-reduction for real people.',
     index: '06',
+    color: 'green' as const,
   },
 ] as const;
 

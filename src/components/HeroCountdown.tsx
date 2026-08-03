@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { event } from '../data/event';
 
 interface TimeLeft {
@@ -24,60 +24,11 @@ function getTimeLeft(target: number): TimeLeft {
 }
 
 const units = [
-  { key: 'days', label: 'd' },
-  { key: 'hours', label: 'h' },
-  { key: 'minutes', label: 'm' },
-  { key: 'seconds', label: 's' },
+  { key: 'days', label: 'days' },
+  { key: 'hours', label: 'hrs' },
+  { key: 'minutes', label: 'min' },
+  { key: 'seconds', label: 'sec' },
 ] as const;
-
-function AnimatedUnit({ value, label }: { value: number; label: string }) {
-  const formatted = String(value).padStart(2, '0');
-  const [current, setCurrent] = useState(formatted);
-  const [previous, setPrevious] = useState<string | null>(null);
-  const reducedMotion = useRef(
-    typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  );
-
-  useEffect(() => {
-    if (formatted === current) return;
-
-    if (reducedMotion.current) {
-      setCurrent(formatted);
-      return;
-    }
-
-    setPrevious(current);
-    setCurrent(formatted);
-    const id = window.setTimeout(() => setPrevious(null), 380);
-    return () => window.clearTimeout(id);
-  }, [formatted, current]);
-
-  return (
-    <div className="text-center">
-      <div className="relative h-9 overflow-hidden">
-        {previous && (
-          <span
-            key={`out-${previous}`}
-            className="countdown-tick-out absolute inset-0 font-mono text-2xl font-black tabular-nums leading-9 text-village-text"
-            aria-hidden="true"
-          >
-            {previous}
-          </span>
-        )}
-        <span
-          key={`in-${current}`}
-          className={`absolute inset-0 font-mono text-2xl font-black tabular-nums leading-9 text-village-text ${
-            previous ? 'countdown-tick-in' : ''
-          }`}
-        >
-          {current}
-        </span>
-      </div>
-      <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-village-muted">{label}</p>
-    </div>
-  );
-}
 
 interface HeroCountdownProps {
   className?: string;
@@ -95,17 +46,30 @@ export function HeroCountdown({ className = '' }: HeroCountdownProps) {
   }, [target]);
 
   return (
-    <aside className={`text-center ${className}`} aria-live="polite" aria-atomic="true">
+    <aside
+      className={`border-[3px] border-paper bg-panel p-5 shadow-pix ${className}`}
+      aria-live="polite"
+      aria-atomic="true"
+    >
       {time.live ? (
-        <p className="font-mono text-sm text-village-green">We&apos;re live</p>
+        <p className="text-center font-display text-sm text-green">We&apos;re live</p>
       ) : (
         <>
           <div className="grid grid-cols-4 gap-2">
             {units.map(({ key, label }) => (
-              <AnimatedUnit key={key} value={time[key]} label={label} />
+              <div key={key} className="text-center">
+                <div className="font-display text-xl leading-8 text-yellow">
+                  {String(time[key]).padStart(2, '0')}
+                </div>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-wider text-paper-dim">
+                  {label}
+                </p>
+              </div>
             ))}
           </div>
-          <p className="mt-4 font-mono text-xs text-village-muted">Time until the village opens</p>
+          <p className="mt-4 text-center font-mono text-xs text-paper-dim">
+            Time until the village opens
+          </p>
         </>
       )}
     </aside>

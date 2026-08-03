@@ -12,15 +12,17 @@ export function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-village-border/60 bg-village-bg/90 backdrop-blur-md">
+    <header className="sticky top-0 z-[100] border-b-[3px] border-panel-2 bg-bg/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link
           to="/"
-          className="group flex items-center gap-2 font-mono text-sm font-bold text-village-text focus:outline-none focus:ring-2 focus:ring-village-green focus:ring-offset-2 focus:ring-offset-village-bg"
+          className="group flex items-center gap-2 font-display text-xs font-bold text-paper focus:outline-none"
           onClick={closeMenu}
         >
-          <span className="text-village-green">[SBV]</span>
-          <span className="hidden sm:inline">{event.shortName}</span>
+          <span className="border-2 border-green px-1.5 py-1 text-green">SBV</span>
+          <span className="hidden font-mono text-xs font-medium normal-case tracking-normal text-paper-dim sm:inline">
+            {event.shortName}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
@@ -28,23 +30,23 @@ export function Header() {
             <Link
               key={item.href}
               to={item.href}
-              className={`rounded-lg px-3 py-2 font-mono text-xs transition focus:outline-none focus:ring-2 focus:ring-village-green focus:ring-offset-2 focus:ring-offset-village-bg ${
+              className={`px-3 py-2 font-mono text-xs font-medium uppercase tracking-wide transition focus:outline-none focus-visible:bg-panel-2 ${
                 location.pathname === item.href
-                  ? 'text-village-green'
-                  : 'text-village-muted hover:text-village-text'
+                  ? 'text-yellow'
+                  : 'text-paper-dim hover:text-paper'
               }`}
             >
               {item.label}
             </Link>
           ))}
-          <Button href={forms.speakerSubmission} variant="primary" className="ml-2 !px-4 !py-2 !text-xs">
+          <Button href={forms.speakerSubmission} variant="primary" className="ml-2 !px-4 !py-2 !text-[11px]">
             Submit a Talk
           </Button>
         </nav>
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded-lg border border-village-border text-village-text lg:hidden focus:outline-none focus:ring-2 focus:ring-village-green focus:ring-offset-2 focus:ring-offset-village-bg"
+          className="flex h-10 w-10 items-center justify-center border-[3px] border-paper text-paper lg:hidden focus:outline-none"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -62,7 +64,7 @@ export function Header() {
 
       {menuOpen && (
         <nav
-          className="border-t border-village-border bg-village-bg px-4 py-4 lg:hidden"
+          className="border-t-[3px] border-panel-2 bg-bg px-4 py-4 lg:hidden"
           aria-label="Mobile navigation"
         >
           <ul className="flex flex-col gap-1">
@@ -70,10 +72,10 @@ export function Header() {
               <li key={item.href}>
                 <Link
                   to={item.href}
-                  className={`block rounded-lg px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-village-green ${
+                  className={`block px-4 py-3 font-mono text-sm uppercase tracking-wide focus:outline-none ${
                     location.pathname === item.href
-                      ? 'bg-village-surface text-village-green'
-                      : 'text-village-muted hover:bg-village-surface hover:text-village-text'
+                      ? 'bg-panel-2 text-yellow'
+                      : 'text-paper-dim hover:bg-panel-2 hover:text-paper'
                   }`}
                   onClick={closeMenu}
                 >
@@ -82,11 +84,7 @@ export function Header() {
               </li>
             ))}
             <li className="pt-2">
-              <Button
-                href={forms.speakerSubmission}
-                variant="primary"
-                className="w-full"
-              >
+              <Button href={forms.speakerSubmission} variant="primary" className="w-full">
                 Submit a Talk
               </Button>
             </li>

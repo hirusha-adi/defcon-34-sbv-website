@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="6" fill="#050807"/>
-  <text x="16" y="21" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#39FF88">SBV</text>
+  <rect width="32" height="32" fill="#0a0a0a"/>
+  <rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="#f5efe2" stroke-width="2"/>
+  <text x="16" y="21" text-anchor="middle" font-family="monospace" font-size="9" font-weight="bold" fill="#ffcf33">SBV</text>
 </svg>

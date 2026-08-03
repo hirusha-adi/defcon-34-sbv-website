@@ -1,20 +1,27 @@
+export type BadgeTone = 'paper' | 'yellow' | 'coral' | 'mint' | 'sky' | 'violet' | 'green' | 'blue' | 'pink';
+
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'default' | 'warning' | 'danger' | 'accent';
+  tone?: BadgeTone;
   className?: string;
 }
 
-const variantClasses = {
-  default: 'border-village-border bg-village-soft text-village-muted',
-  warning: 'border-village-warning/40 bg-village-warning/10 text-village-warning',
-  danger: 'border-village-danger/40 bg-village-danger/10 text-village-danger',
-  accent: 'border-village-green/40 bg-village-green/10 text-village-green',
+const toneClasses: Record<BadgeTone, string> = {
+  paper: 'border-paper-dim/50 text-paper-dim',
+  yellow: 'border-yellow text-yellow',
+  coral: 'border-coral text-coral',
+  mint: 'border-mint text-mint',
+  sky: 'border-sky text-sky',
+  violet: 'border-violet text-violet',
+  green: 'border-green text-green',
+  blue: 'border-blue text-blue',
+  pink: 'border-pink text-pink',
 };
 
-export function Badge({ children, variant = 'default', className = '' }: BadgeProps) {
+export function Badge({ children, tone = 'paper', className = '' }: BadgeProps) {
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 font-mono text-xs ${variantClasses[variant]} ${className}`}
+      className={`inline-flex items-center rounded-none border-2 bg-panel px-2.5 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider ${toneClasses[tone]} ${className}`}
     >
       {children}
     </span>

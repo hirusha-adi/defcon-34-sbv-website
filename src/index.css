@@ -1,132 +1,74 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-village-bg: #050807;
-  --color-village-soft: #07110d;
-  --color-village-surface: #0b1512;
-  --color-village-raised: #102018;
-  --color-village-border: #18352a;
-  --color-village-border-strong: #266347;
-  --color-village-text: #e6fff2;
-  --color-village-muted: #8aa99a;
-  --color-village-green: #39ff88;
-  --color-village-cyan: #40e0d0;
-  --color-village-warning: #ffd166;
-  --color-village-danger: #ff4d6d;
+  /* Surfaces */
+  --color-void: #050505;
+  --color-bg: #0a0a0a;
+  --color-panel: #111111;
+  --color-panel-2: #1a1a1a;
 
-  --shadow-glow: 0 0 30px rgba(57, 255, 136, 0.12);
-  --shadow-panel: 0 20px 60px rgba(0, 0, 0, 0.35);
+  /* Text / ink */
+  --color-paper: #f5efe2;
+  --color-paper-dim: #a9a294;
+  --color-ink: #0a0714;
 
-  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Menlo, monospace;
+  /* Brand + status accents */
+  --color-yellow: #ffcf33;
+  --color-green: #39ff88;
+  --color-coral: #ff6b6b;
+  --color-mint: #2ce0a3;
+  --color-sky: #29c5e0;
+  --color-violet: #b06bd6;
+  --color-pink: #e91e63;
+  --color-blue: #3d6bff;
+
+  --shadow-pix: 4px 4px 0 0 var(--color-paper);
+  --shadow-pix-lg: 8px 8px 0 0 var(--color-paper);
+  --shadow-pix-yellow: 4px 4px 0 0 var(--color-yellow);
+  --shadow-pix-yellow-lg: 8px 8px 0 0 var(--color-yellow);
+
+  --font-display: 'Silkscreen', var(--font-mono);
+  --font-body: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
-    @apply bg-village-bg font-sans text-village-text antialiased;
+    @apply bg-bg font-body text-paper antialiased;
+    background-image:
+      linear-gradient(#f5efe20a 1px, transparent 1px),
+      linear-gradient(90deg, #f5efe20a 1px, transparent 1px),
+      repeating-linear-gradient(0deg, #00000030 0 1px, transparent 1px 3px);
+    background-size:
+      26px 26px,
+      26px 26px,
+      100% 3px;
   }
 
   ::selection {
-    @apply bg-village-green/30 text-village-text;
+    background: color-mix(in srgb, var(--color-yellow) 35%, transparent);
+    color: var(--color-paper);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-yellow);
+    outline-offset: 2px;
   }
 }
 
 @layer utilities {
   .bg-grid {
     background-image:
-      linear-gradient(rgba(57, 255, 136, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(57, 255, 136, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-}
-
-@layer components {
-  .hero-section {
-    background-color: var(--color-village-bg);
-    background-image: radial-gradient(
-      ellipse 70% 55% at 72% 18%,
-      rgba(57, 255, 136, 0.04),
-      transparent
-    );
-  }
-
-  .hero-bottom-fade {
-    height: min(42vh, 280px);
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(5, 8, 7, 0.35) 30%,
-      rgba(5, 8, 7, 0.75) 60%,
-      #050807 100%
-    );
-  }
-
-  .hero-noise {
-    opacity: 0.35;
-    mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 128px 128px;
-    mix-blend-mode: overlay;
-  }
-
-  .hero-logo-layer {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 4vh;
-    will-change: transform;
-    padding-inline: 4vw;
-  }
-
-  .hero-logo-mark {
-    display: block;
-    width: clamp(22rem, 52vw, 46rem);
-    height: auto;
-    max-width: min(92vw, 46rem);
-    margin-inline: auto;
-    transform: translate(-2%, -6%);
-    opacity: 0.12;
-    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, transparent 92%);
-    user-select: none;
-  }
-
-  .countdown-tick-out {
-    animation: countdown-tick-out 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  .countdown-tick-in {
-    animation: countdown-tick-in 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-
-  .cfp-submit-btn {
-    background-color: var(--color-village-green);
-    background-image:
-      linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
-    background-size: 8px 8px;
-  }
-}
-
-@keyframes countdown-tick-out {
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes countdown-tick-in {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
+      linear-gradient(#f5efe214 1px, transparent 1px),
+      linear-gradient(90deg, #f5efe214 1px, transparent 1px);
+    background-size: 32px 32px;
   }
 }
 

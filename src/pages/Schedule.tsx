@@ -51,15 +51,15 @@ export function Schedule() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {scheduleDays.map((day) => (
             <Card key={day.day}>
-              <Badge variant="warning" className="mb-3">
+              <Badge tone="yellow" className="mb-3">
                 TBA
               </Badge>
-              <h3 className="font-mono text-sm text-village-green">{day.day}</h3>
-              <p className="font-mono text-xs text-village-muted">{day.date}</p>
-              <p className="mt-3 text-sm leading-6 text-village-muted">{day.status}</p>
-              <ul className="mt-4 space-y-2 border-t border-village-border pt-4">
+              <h3 className="font-mono text-sm text-green">{day.day}</h3>
+              <p className="font-mono text-xs text-paper-dim">{day.date}</p>
+              <p className="mt-3 text-sm leading-6 text-paper-dim">{day.status}</p>
+              <ul className="mt-4 space-y-2 border-t-[3px] border-panel-2 pt-4">
                 {placeholderSlots.map((slot, i) => (
-                  <li key={i} className="font-mono text-[11px] text-village-muted/80">
+                  <li key={i} className="font-mono text-[11px] text-paper-dim/80">
                     {slot.slot} · {slot.speaker}
                   </li>
                 ))}

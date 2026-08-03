@@ -1,10 +1,5 @@
 import { forms } from '../data/forms';
-import {
-  submissionTypes,
-  cfpTopics,
-  cfpNotAFit,
-  expectedFormFields,
-} from '../data/speakers';
+import { submissionTypes, cfpTopics, cfpNotAFit, expectedFormFields } from '../data/speakers';
 import { PageShell } from '../components/PageShell';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
@@ -28,11 +23,15 @@ export function Speakers() {
 
       <section className="mb-16">
         <SubsectionHeader title="Submission types" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {submissionTypes.map((type) => (
-            <Card key={type.name} interactive>
-              <h3 className="font-mono text-sm font-bold text-village-green">{type.name}</h3>
-              <p className="mt-2 text-sm leading-6 text-village-muted">{type.description}</p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {submissionTypes.map((type, i) => (
+            <Card
+              key={type.name}
+              interactive
+              className={i === submissionTypes.length - 1 ? 'sm:col-span-2' : ''}
+            >
+              <h3 className="font-mono text-sm font-bold text-green">{type.name}</h3>
+              <p className="mt-2 text-sm leading-6 text-paper-dim">{type.description}</p>
             </Card>
           ))}
         </div>
@@ -43,7 +42,7 @@ export function Speakers() {
         <div className="grid gap-4 sm:grid-cols-2">
           {cfpTopics.map((topic) => (
             <Card key={topic}>
-              <p className="text-sm leading-6 text-village-text">{topic}</p>
+              <p className="text-sm leading-6 text-paper">{topic}</p>
             </Card>
           ))}
         </div>
@@ -53,8 +52,8 @@ export function Speakers() {
         <WarningPanel title="Not a fit">
           <ul className="space-y-2">
             {cfpNotAFit.map((item) => (
-              <li key={item} className="flex gap-2 text-sm leading-6 text-village-muted">
-                <span className="text-village-danger" aria-hidden="true">
+              <li key={item} className="flex gap-2 text-sm leading-6 text-paper-dim">
+                <span className="text-coral" aria-hidden="true">
                   ✕
                 </span>
                 {item}
@@ -72,8 +71,8 @@ export function Speakers() {
         <Card>
           <ul className="grid gap-2 sm:grid-cols-2">
             {expectedFormFields.map((field) => (
-              <li key={field} className="flex gap-2 font-mono text-xs text-village-muted">
-                <span className="text-village-green">›</span>
+              <li key={field} className="flex gap-2 font-mono text-xs text-paper-dim">
+                <span className="text-green">›</span>
                 {field}
               </li>
             ))}

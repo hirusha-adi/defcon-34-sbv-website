@@ -6,12 +6,12 @@ interface CardProps {
 
 export function Card({ children, interactive = false, className = '' }: CardProps) {
   const interactiveClasses = interactive
-    ? 'transition hover:-translate-y-0.5 hover:border-village-green hover:shadow-glow motion-reduce:transition-none motion-reduce:hover:translate-y-0'
+    ? 'transition-transform duration-150 ease-out-strong hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-pix-lg motion-reduce:transition-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0'
     : '';
 
   return (
     <div
-      className={`rounded-2xl border border-village-border bg-village-surface/80 p-6 shadow-panel ${interactiveClasses} ${className}`}
+      className={`rounded-none border-[3px] border-paper bg-panel p-6 shadow-pix ${interactiveClasses} ${className}`}
     >
       {children}
     </div>
