@@ -3,5 +3,6 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS ? '/defcon-34-sbv-website/' : '/',
   plugins: [react(), tailwindcss()],
 });
