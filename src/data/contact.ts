@@ -1,6 +1,13 @@
 import { forms } from './forms';
+import { event } from './event';
 
 export const contactCards = [
+  {
+    title: 'Join the community',
+    description: 'Chat with the village team and community year-round on Discord.',
+    cta: 'Join Discord',
+    href: event.discordUrl,
+  },
   {
     title: 'Speak at the village',
     description: 'Questions about the CFP, talk formats, or submission process.',

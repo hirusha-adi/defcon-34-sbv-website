@@ -15,8 +15,12 @@ export function Contact() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        {contactCards.map((card) => (
-          <Card key={card.title} interactive className="flex flex-col">
+        {contactCards.map((card, i) => (
+          <Card
+            key={card.title}
+            interactive
+            className={`flex flex-col ${i === contactCards.length - 1 ? 'sm:col-span-2' : ''}`}
+          >
             <h3 className="text-lg font-bold text-paper">{card.title}</h3>
             <p className="mt-2 flex-1 text-sm leading-6 text-paper-dim">{card.description}</p>
             <div className="mt-4">

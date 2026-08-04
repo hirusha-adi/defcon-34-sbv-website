@@ -1,3 +1,36 @@
+export const confirmedSpeakers = [
+  {
+    name: 'DolphinVG',
+    pronouns: 'she/her',
+    role: 'Speaker',
+    talkTitle: "Scammers Don't Discriminate",
+    time: 'Saturday, August 8 · 12:30 – 14:00',
+    description:
+      'A look at how scammers target younger people through gaming, crypto, romance, and job scams, with real cases and practical ways to build resilience.',
+    links: [] as { label: string; href: string }[],
+  },
+  {
+    name: 'RinoaPoison',
+    pronouns: 'she/her',
+    role: 'Twitch streamer & content creator',
+    talkTitle: 'Creator Talk with RinoaPoison & VanHelen',
+    time: 'Saturday, August 8 · 14:00 – 15:30',
+    description:
+      'A behind-the-scenes conversation on live scambaiting, character work, and growing an audience across Twitch and YouTube.',
+    links: [{ label: 'twitch.tv/rinoapoison', href: 'https://twitch.tv/rinoapoison' }],
+  },
+  {
+    name: 'VanHelen',
+    pronouns: 'she/her',
+    role: 'Twitch streamer & content creator',
+    talkTitle: 'Creator Talk with RinoaPoison & VanHelen',
+    time: 'Saturday, August 8 · 14:00 – 15:30',
+    description:
+      'Joins RinoaPoison to share lessons on running live calls safely while building a content practice around scambaiting.',
+    links: [] as { label: string; href: string }[],
+  },
+] as const;
+
 export const submissionTypes = [
   { name: 'Talk', description: '30–45 minute presentation on research, tooling, or field lessons.' },
   { name: 'Workshop', description: 'Hands-on session with practical exercises and guided discussion.' },

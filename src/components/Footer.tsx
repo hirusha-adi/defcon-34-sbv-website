@@ -42,11 +42,11 @@ export function Footer() {
               <Button href={forms.speakerSubmission} variant="primary" className="!text-[11px]">
                 Submit a Talk
               </Button>
+              <Button href={event.discordUrl} variant="secondary" className="!text-[11px]">
+                Join Discord
+              </Button>
               <Button href={forms.sponsorInquiry} variant="secondary" className="!text-[11px]">
                 Become a Sponsor
-              </Button>
-              <Button href={forms.updates} variant="secondary" className="!text-[11px]">
-                Get Updates
               </Button>
             </div>
           </div>

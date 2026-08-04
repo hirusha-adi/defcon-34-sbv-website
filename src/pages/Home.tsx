@@ -3,6 +3,7 @@ import { event } from '../data/event';
 import { forms } from '../data/forms';
 import { scheduleDays } from '../data/schedule';
 import { resourceGroups, homeHypeCards, signalBoard } from '../data/resources';
+import { sponsorPreview } from '../data/sponsors';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { ContentSection } from '../components/ContentSection';
@@ -69,24 +70,30 @@ export function Home() {
       <ContentSection variant="soft">
         <SectionHeader
           eyebrow="Schedule"
-          title="Programming coming soon"
-          description="Full village schedule will be published once confirmed."
+          title="The line-up is confirmed"
+          description={`Hall hours: ${event.hallHours}.`}
         />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 lg:grid-cols-3">
           {scheduleDays.map((day) => (
             <Card key={day.day}>
-              <Badge tone="yellow" className="mb-3">
-                TBA
+              <Badge tone="green" className="mb-3">
+                Confirmed
               </Badge>
               <h3 className="font-mono text-sm text-green">{day.day}</h3>
-              <p className="font-mono text-xs text-paper-dim">{day.date}</p>
-              <p className="mt-3 text-sm leading-6 text-paper-dim">{day.status}</p>
+              <p className="font-mono text-xs text-paper-dim">
+                {day.date} · {day.hours}
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-paper-dim">
+                {day.sessions.map((s) => (
+                  <li key={s.title}>{s.title}</li>
+                ))}
+              </ul>
             </Card>
           ))}
         </div>
         <div className="mt-8 text-center">
           <Button href="/schedule" variant="secondary">
-            View schedule status
+            View full schedule
           </Button>
         </div>
       </ContentSection>
@@ -95,12 +102,21 @@ export function Home() {
         <SectionHeader
           eyebrow="Sponsors"
           title="Thank you to our supporters"
-          description="Thank you to AnyDesk for supporting anti-scam education and community-led scam disruption work. More sponsors TBA."
+          description={`Malwarebytes and Just Hacking Training keep the village running. Operated by ${event.orgName}.`}
         />
         <div className="flex flex-wrap items-center gap-6">
-          <div className="flex h-24 w-48 items-center justify-center border-[3px] border-panel-2 bg-panel font-mono text-sm text-paper-dim">
-            AnyDesk
-          </div>
+          {sponsorPreview.map((sponsor) => (
+            <div
+              key={sponsor.name}
+              className="flex h-24 w-48 items-center justify-center border-[3px] border-panel-2 bg-paper p-4"
+            >
+              <img
+                src={sponsor.logo}
+                alt={`${sponsor.name} logo`}
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+          ))}
           <div className="flex flex-wrap gap-3">
             <Button href={forms.sponsorInquiry}>Become a Sponsor</Button>
             <Button href="/sponsors" variant="secondary">

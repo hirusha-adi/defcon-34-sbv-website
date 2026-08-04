@@ -1,18 +1,20 @@
 export const sponsorPreview = [
   {
-    name: 'AnyDesk',
-    label: 'Sponsor / supporter',
+    name: 'Malwarebytes',
+    label: 'Tier 01 · Operations Sponsor',
     description:
-      'Strategic partner in remote desktop security and fraud awareness. Supporting the village mission to educate the public on remote-access scams.',
+      'Operations sponsor of the village — support that covers printed materials, volunteer apparel, insurance, and day-to-day supplies.',
+    logo: '/sponsors/malwarebytes.webp',
     url: '#',
   },
-] as const;
-
-export const sponsorTiers = [
-  { name: 'Signal Sponsor', description: 'Details coming soon' },
-  { name: 'Infrastructure Sponsor', description: 'Details coming soon' },
-  { name: 'Community Sponsor', description: 'Details coming soon' },
-  { name: 'Education Sponsor', description: 'Details coming soon' },
+  {
+    name: 'Just Hacking Training',
+    label: 'Tier 02 · In-kind',
+    description:
+      'Donates free training courses, awarded at village staff discretion to standout callers during the Friday Live Calls Workshop.',
+    logo: '/sponsors/just-hacking-training.webp',
+    url: '#',
+  },
 ] as const;
 
 export const sponsorValueProps = [

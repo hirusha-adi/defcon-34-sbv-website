@@ -1,4 +1,5 @@
 import { activityLog, missionDirective, villagePillars } from '../data/about';
+import { event } from '../data/event';
 import { ContentSection } from './ContentSection';
 import { SectionHeader } from './SectionHeader';
 import { Card } from './Card';
@@ -45,9 +46,19 @@ export function AboutSection() {
           </div>
           <p className="mt-5 text-base leading-7 text-paper-dim">{missionDirective.body}</p>
 
-          <p className="mt-6 font-mono text-xs text-yellow">
-            Replace this with approved GCAS Labs mission copy before production launch.
-          </p>
+          <div className="mt-6 flex items-center gap-3 border-t-[3px] border-panel-2 pt-5">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-panel-2 bg-paper p-1.5">
+              <img src="/partners/gcas-labs-logo.svg" alt="" className="max-h-full max-w-full object-contain" />
+            </div>
+            <a
+              href={event.orgUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs text-green hover:underline focus:outline-none"
+            >
+              Organized by {event.orgName} ↗
+            </a>
+          </div>
         </Card>
 
         <div className="flex flex-col gap-6">

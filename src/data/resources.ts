@@ -114,46 +114,46 @@ export const resourceGroups: ResourceGroup[] = [
 
 export const homeHypeCards = [
   {
-    title: 'Talks',
-    description: 'Research, field stories, and fraud trend intelligence from the front line.',
+    title: 'Live Calls Workshop',
+    description: 'Hands-on Friday session running real scam calls with the crowd at the booth.',
     index: '01',
     color: 'yellow' as const,
   },
   {
-    title: 'Workshops',
-    description: 'Hands-on sessions on scam recognition, defense, and community tooling.',
+    title: 'Speaker Talks',
+    description: "Scam-trend research and a creator panel from the village stage on Saturday.",
     index: '02',
     color: 'mint' as const,
   },
   {
-    title: 'Live Demos',
-    description: 'Responsible demonstrations of scam patterns and defensive countermeasures.',
+    title: 'Scambait Bingo',
+    description: 'Call out scam tactics live over Discord voice on Sunday. Prize-free by design.',
     index: '03',
     color: 'sky' as const,
   },
   {
-    title: 'Scam Awareness',
-    description: 'Public education on how scams work and how to avoid them.',
+    title: 'KSCM Scambait Radio',
+    description: 'Recorded scambait calls looping in Discord voice across all three days.',
     index: '04',
     color: 'coral' as const,
   },
   {
-    title: 'Community Tools',
-    description: 'Dashboards, automation, reporting pipelines, and shared tooling.',
+    title: 'Creator Drop-In',
+    description: 'Meet scambait streamers and creators at the booth Saturday afternoon.',
     index: '05',
     color: 'violet' as const,
   },
   {
-    title: 'Victim-Safety Education',
-    description: 'Intervention, support, and harm-reduction for real people.',
+    title: 'Open Q&A',
+    description: 'Village volunteers on hand at the booth for questions all weekend.',
     index: '06',
     color: 'green' as const,
   },
 ] as const;
 
 export const signalBoard = [
-  { label: 'CFP', value: 'Opening Soon' },
-  { label: 'Schedule', value: 'Coming Soon' },
-  { label: 'Sponsors', value: 'AnyDesk + more TBA' },
-  { label: 'Village Ops', value: 'August 2026' },
+  { label: 'Schedule', value: 'Confirmed · Aug 7–9' },
+  { label: 'Speakers', value: '2 sessions confirmed' },
+  { label: 'Sponsors', value: 'Malwarebytes + Just Hacking Training' },
+  { label: 'Community', value: 'Join us on Discord' },
 ] as const;

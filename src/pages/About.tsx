@@ -4,6 +4,7 @@ import { SectionHeader } from '../components/SectionHeader';
 import { SubsectionHeader } from '../components/SubsectionHeader';
 import { EthicsPanel } from '../components/EthicsPanel';
 import { values } from '../data/about';
+import { event } from '../data/event';
 
 export function About() {
   return (
@@ -54,15 +55,26 @@ export function About() {
 
         <div className="space-y-6">
           <Card>
-            <p className="font-mono text-xs uppercase tracking-widest text-green">GCAS Labs</p>
+            <div className="flex items-center gap-4">
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center border-[3px] border-panel-2 bg-paper p-2">
+                <img src="/partners/gcas-labs-logo.svg" alt="GCAS Labs logo" className="max-h-full max-w-full object-contain" />
+              </div>
+              <p className="font-mono text-xs uppercase tracking-widest text-green">{event.orgName}</p>
+            </div>
             <p className="mt-4 text-base leading-7 text-paper-dim">
-              GCAS Labs supports community-led anti-scam research, education, and responsible
-              disruption work by connecting scambaiters, security researchers, technologists, and
-              victim-support advocates.
+              ScamBait Village is organized by {event.orgName}, a nonprofit supporting
+              community-led anti-scam research, education, and responsible disruption work by
+              connecting scambaiters, security researchers, technologists, and victim-support
+              advocates.
             </p>
-            <p className="mt-4 font-mono text-xs text-yellow">
-              Replace this with approved GCAS Labs mission copy before production launch.
-            </p>
+            <a
+              href={event.orgUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block font-mono text-xs text-green hover:underline focus:outline-none"
+            >
+              gcaslabs.org ↗
+            </a>
           </Card>
 
           <EthicsPanel />
